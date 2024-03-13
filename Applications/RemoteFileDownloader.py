@@ -73,6 +73,7 @@ class RemoteFileDownloader:
             str: La ruta al archivo descargado en el sistema de archivos local.
         """
         try:
+            os.makedirs(output_path, exist_ok=True)
             # Envía una solicitud HTTP GET a la URL de descarga
             remote_download_url = self.prepare_url(download_url)
             response = requests.get(remote_download_url, stream=True, headers={'user-agent': 'Wget/1.16 (linux-gnu)'})
